@@ -1,22 +1,24 @@
-// useEffect: persistent state
-// http://localhost:3000/isolated/exercise/02.js
-/* Exercise
-import * as React from 'react'
+
+
+/* Exercise 02: useEffect: persistent state */
+
+/* In this exercise, we’re going to enhance our <Greeting /> component 
+to get its initial state value from localStorage (if available) and keep 
+localStorage updated as the name is updated. */
+
+import React, {useState, useEffect} from 'react'
 
 function Greeting({initialName = ''}) {
-  // 🐨 initialize the state to the value from localStorage
-  const [name, setName] = React.useState(() => window.localStorage.getItem('name') || initialName)
-
-  // 🐨 Here's where you'll use `React.useEffect`.
-  // The callback should set the `name` in localStorage.
+  const [name, setName] = useState(() => window.localStorage.getItem('name') || initialName)
   
-  React.useEffect(() => {
+  useEffect(() => {
     window.localStorage.setItem("name", name);
   }, [name]);
 
   function handleChange(event) {
     setName(event.target.value)
   }
+
   return (
     <div>
       <form>
@@ -33,8 +35,9 @@ function App() {
 }
 
 export default App
-*/
 
+
+/*
 // Extra Credit - Custom Hook
 import * as React from 'react'
 
@@ -73,3 +76,4 @@ function App() {
 }
 
 export default App
+*/
